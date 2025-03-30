@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Money</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform:scale(1.4);
+        }
+        .message {
+            color: red;
+            margin-bottom: 20px;
+        }
+    </style>
+    
+  
+</head>
+<body>
+    <h1>Deposit Money</h1>
+
+    <!-- Display the message if it exists -->
+    {% if message %}
+        <div class="message">{{ message  or error}}</div>
+    {% endif %}
+
+    <!-- Form for withdrawal -->
+    <form method="POST">
+        <label for="acno">Account Number:</label><br>
+        <input type="text" id="acno" name="acno" placeholder="Enter your account number" required><br>
+
+        <label for="pin">PIN:</label><br>
+        <input type="password" id="pin" name="pin" placeholder="Enter your PIN" required><br>
+
+        <label for="money">Amount to Deposit:</label><br>
+        <input type="number" id="money" name="money" placeholder="Enter the amount" required><br>
+
+        <button type="submit">Deposit</button>
+        
+    </form>
+    
+    
+</body>
+</html>

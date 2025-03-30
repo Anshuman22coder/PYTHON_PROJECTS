@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            text-align: center;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: 2px solid #333;
+            display: inline-block;
+        }
+
+        a:hover {
+            background-color: #45a049;
+            transform: scale(1.65);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Bank Management System</h1>
+        <ul>
+            <li><a href="{{ url_for('create_account') }}">Create Account</a></li>
+            <li><a href="{{ url_for('deposit') }}">Deposit</a></li>
+            <li><a href="{{ url_for('withdraw') }}">Withdraw</a></li>
+            <li><a href="{{ url_for('display') }}">Display Account</a></li>
+        </ul>
+    </div>
+</body>
+</html>
