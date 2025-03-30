@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1><i>Anshu's To-Do List</i></h1>
+        <form action="/add" method="post"><!--this is the method to make t task-->
+            <input type="text" name="task" placeholder="New Task" required>
+            <button type="submit"><b>ADD</b></button>
+        </form>
+
+        <ul>
+            {% for task in tasks %}
+                <li>
+                   <b>{{ task }}</b>  <a href="/delete/{{ loop.index0 }}"><b><u>Delete {{ loop.index0 +1}}th task</u></b></a>
+                </li>
+            {% endfor %}   <!--{{loop.index0}} is a dynamic link  and loop.index displays the current iteration no.. or index,, as 0 based as 0 is there as suffix of loop.index0
+        </ul>
+    </div>
+</body>
+</html>
