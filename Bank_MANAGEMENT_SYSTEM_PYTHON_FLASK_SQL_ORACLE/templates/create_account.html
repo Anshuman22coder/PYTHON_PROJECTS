@@ -60,18 +60,28 @@
 <body>
     <div class="container">
         <h1>Create Account</h1>
+         <!-- Display Pre-Generated Account Number -->
+    <p>Your Account Number: <strong>{{ account_no }}</strong></p>
         <form method="POST">
             <label for="name">Name:</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" placeholder="Enter your account name" required>
 
             <label for="balance">Balance:</label>
-            <input type="number" name="balance" required>
+            <input type="number" name="balance"  placeholder="Enter your amount >0" required>
 
             <label for="pin">Pin:</label>
-            <input type="text" name="pin" required>
+            <input type="text" name="pin" placeholder="Enter your 4 digit PIN" required>
 
             <label for="acc_type">Account Type:</label>
-            <input type="text" name="acc_type" required>
+            <br>
+            <select name="acc_type" id="acc_type" required>
+                <option value="Savings">Savings</option>
+                <option value="Current">Current</option>
+            </select>
+            <br>
+            <br>
+            
+            
 
             <button type="submit">Create Account</button>
          
