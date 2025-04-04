@@ -16,9 +16,14 @@ def home():
 
 @app.route('/create_account', methods=['GET', 'POST'])
 def create_account():  # it means on createaccount post or get request, this craeteaccount() will get run..
-    if request.method == 'POST':
-        conn = get_db_connection()
-        curr = conn.cursor()
+     conn = get_db_connection()
+     curr = conn.cursor()
+     curr.execute("SELECT COUNT(*) FROM Account")  
+     count = curr.fetchone()[0]  # Get total accounts
+     account_no = "SBI" + str(count + 1)  # Generate next account number
+
+     if request.method == 'POST':
+       
         
         name = request.form['name']  # getting the value from "form" in html,,and also note that method =POST and action is /submit ie, with subit clicking this will get executed..
         balance = int(request.form['balance'])
@@ -26,10 +31,7 @@ def create_account():  # it means on createaccount post or get request, this cra
         acc_type = request.form['acc_type']
         
         # Fetch the current number of accounts
-        curr.execute("Select * from Account")
-        x = curr.fetchall()
-        account_no = "SBI" + str(len(x) + 1)
-
+      
         # Insert the new account into the database
         curr.execute("Insert into Account (account_no, name, balance, pin, type) values(:1, :2, :3, :4, :5)",
                      (account_no, name, balance, pin, acc_type))
@@ -37,10 +39,10 @@ def create_account():  # it means on createaccount post or get request, this cra
         
         curr.close()
         conn.close()
-
+      
         return redirect(url_for('home'))  ## Redirect to the home page after processing
    
-    return render_template('create_account.html')  ##if some fault is there then the webpage will be still in he createaccount page ..
+     return render_template('create_account.html',account_no=account_no)  ##if some fault is there then the webpage will be still in he createaccount page ..
 
 
 @app.route('/deposit', methods=['GET', 'POST'])
@@ -69,7 +71,7 @@ def deposit():
     
     return render_template('deposit.html')# will be rendered when get request..
 
-@app.route('/withdraw', methods=['GET', 'POST'])
+@app.route('/withdraw', methods=['GET', 'POST'])  #  both get and post because we want to render the html elements first..
 def withdraw():
     if request.method == 'POST':
         conn = get_db_connection()
